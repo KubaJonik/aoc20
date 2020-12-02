@@ -15,7 +15,7 @@ solve l = head [x * p | x <- l1, p <- solve' x l2 l3]
 solve' :: Int -> [Int] -> [Int] -> [Int]
 solve' _ [] _ = []
 solve' _ _ [] = []
-solve' k (x:xs) (y:ys) | x+y+k == 2020 = [x * y]
-                       | x+y+k <  2020 = solve' k xs (y:ys)
-                       | otherwise     = solve' k (x:xs) ys
+solve' k (x:xs) (y:ys) | x+y+k > 2020 = solve' k (x:xs) ys
+                       | x+y+k < 2020 = solve' k xs (y:ys)
+                       | otherwise    = [x * y]
 
