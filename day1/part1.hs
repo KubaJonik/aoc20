@@ -12,6 +12,6 @@ solve l = let l1 = sort l
           in solve' l1 l2
 
 solve' :: [Int] -> [Int] -> Int
-solve' (x:xs) (y:ys) | x + y == 2020 = x * y
-                     | x + y  < 2020 = solve' xs (y:ys)
-                     | otherwise     = solve' (x:xs) ys
+solve' (x:xs) (y:ys) | x + y > 2020 = solve' (x:xs) ys
+                     | x + y < 2020 = solve' xs (y:ys)
+                     | otherwise    = x * y
