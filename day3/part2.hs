@@ -8,7 +8,7 @@ solve s = pr [(1,1), (3,1), (5,1), (7,1), (1,2)]
           pr = product . map (\(r,d) -> count r d ls)
 
 count :: Int -> Int -> [String] -> Int
-count r d ls  = count' d ps ls
+count r d ls = count' d ps ls
     where k  = length . head $ ls
           ps = map (`mod` k) [0,r..]
 
