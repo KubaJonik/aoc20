@@ -29,7 +29,6 @@ labelsValid ("ecl",txt) = eclValid txt
 labelsValid ("pid",txt) = pidValid txt
 labelsValid ("cid",txt) = True
 
-
 byrValid :: String -> Bool
 byrValid = isBetween 1920 2002
 
