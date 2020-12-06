@@ -1,14 +1,15 @@
-import Data.List (sort,group,intersect)
+import Data.List (groupBy, intersect)
 
-main = readFile "input.txt" >>= print . solve . parse . lines
+main = readFile "input.txt" >>= print . solve . parse
 
 solve :: [[String]] -> Int
 solve = sum . map count
 
 count :: [String] -> Int
+count []     = 0
 count (x:xs) = length (foldl intersect x xs)
 
-parse :: [String] -> [[String]]
-parse s = case span (/="") s of
-            (h, []) -> [h]
-            (h, s') -> h : parse (tail s')
+parse :: String -> [[String]]
+parse = groupBy nonWhite . lines
+  where nonWhite x y = x/="" && y/=""
+
