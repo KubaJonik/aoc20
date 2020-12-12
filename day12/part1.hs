@@ -2,7 +2,7 @@
 data Action = N Int | S Int |
               E Int | W Int |
               L Int | R Int |
-              F Int deriving (Read, Show)
+              F Int deriving Read
 
 type Pos   = (Int, Int)
 type State = (Pos, Pos)
@@ -38,20 +38,11 @@ move (dx,dy) u (px,py) = (px+dx*u, py+dy*u)
 
 turnLeft :: Int -> Pos -> Pos
 turnLeft 0 p = p
-turnLeft n p = turnLeft (n-90) p'
-  where p' | p == east = north
-           | p == west = south
-           | p == north = west
-           | p == south = east
-
+turnLeft n (x,y) = turnLeft (n-90) (-y,x)
 
 turnRight :: Int -> Pos -> Pos
 turnRight 0 p = p
-turnRight n p = turnRight (n-90) p'
-  where p' | p == east = south
-           | p == west = north
-           | p == north = east
-           | p == south = west
+turnRight n (x,y) = turnRight (n-90) (y,-x)
 
 parse :: String -> [Action]
 parse = map parseLine . lines

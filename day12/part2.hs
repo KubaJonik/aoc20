@@ -2,7 +2,7 @@
 data Action = N Int | S Int |
               E Int | W Int |
               L Int | R Int |
-              F Int deriving (Read, Show)
+              F Int deriving Read
 
 type Pos   = (Int, Int)
 type State = (Pos, Pos)
