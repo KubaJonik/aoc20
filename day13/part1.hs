@@ -12,8 +12,6 @@ ceil :: Integer -> Integer -> Integer
 ceil a b = ceiling (fromInteger a / fromIntegral b)
 
 parse :: String -> (Integer, [Integer])
-parse s = (ts, bs)
+parse s = (read . head $ ls, mapMaybe readMaybe . splitOn "," $ (ls !! 1))
   where ls = lines s
-        ts = read . head $ ls
-        bs = mapMaybe readMaybe . splitOn "," $ (ls !! 1)
 
