@@ -1,10 +1,10 @@
 import Data.List (sort)
 
 main :: IO ()
-main = readFile "input.txt" >>= print . solve . parse
+main = readFile "input.txt" >>= print . solve. parse
 
 parse :: String -> [Int]
-parse = map read . lines
+parse = map . read . lines
 
 solve :: [Int] -> Int
 solve l = let l1 = sort l
