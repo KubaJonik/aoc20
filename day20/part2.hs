@@ -22,8 +22,6 @@ main :: IO ()
 main = do
   monster <- parseMonster <$> readFile "monster.txt"
   image   <- findImage    <$> readFile "input.txt"
-  let images = imageSyms image
-  let size' = tileSize * size - 2*size
   print $ countWaves monster image
 
 countWaves :: [(Int,Int)] -> [(Int,Int)] -> Int
